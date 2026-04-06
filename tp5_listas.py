@@ -157,4 +157,64 @@ print("\nLista Rotada:")
 for i in range(len(rotacion)):
     print(f"Posición {i}: {rotacion[i]}")
 
+
+#Ejercicio 7 Crear una matriz (lista anidada) de 7x2 con las temperaturas mínimas y máximas de una semana.
+#--Calcular el promedio de las mínimas y el de las máximas.
+#--Mostrar en qué día se registró la mayor amplitud térmica.
+print(f"--- EJERCICIO 7 ---")
+matriz_temperaturas = [] 
+dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+#Se crea la matriz
+for i in range(7):
+    print(f"Datos para el día {dias[i]}:")
+    
+    #Validacion de temp mínima.
+    while True:
+        min_ingresada = input("  Ingrese temperatura mínima: ")
+        #Se usa .lstrip() por si ingresan temperaturas bajo cero
+        if min_ingresada.lstrip('-').isdigit():
+            t_min = int(min_ingresada)
+            break
+        print("Error: Ingrese un número entero válido.")
+
+    #Validacion temp máxima
+    while True:
+        max_ingresada = input("  Ingrese temperatura máxima: ")
+        if max_ingresada.lstrip('-').isdigit():
+            t_max = int(max_ingresada)
+            #Se verifica que la temp. máxima no sea menor a la mínima
+            if t_max >= t_min:
+                break
+            else:
+                print(f"Error: La máxima no puede ser menor a la mínima ({t_min}).")
+        else:
+            print("Error: Ingrese un número entero válido.")
+    
+    #Se agregan temperaturas como matriz con .append()
+    matriz_temperaturas.append([t_min, t_max])
+
+#Calculos, se inician sumadores
+suma_minimas = 0
+suma_maximas = 0
+mayor_amplitud = 0
+dia_mayor_amplitud = ""
+
+for i in range(len(matriz_temperaturas)):
+    min_actual = matriz_temperaturas[i][0]
+    max_actual = matriz_temperaturas[i][1]
+    
+    suma_minimas += min_actual
+    suma_maximas += max_actual
+    
+    #Amplitud térmica = Máxima - Mínima
+    amplitud = max_actual - min_actual
+    if amplitud > mayor_amplitud:
+        mayor_amplitud = amplitud
+        dia_mayor_amplitud = dias[i]
+
+print("\n--- RESULTADOS DE LA SEMANA ---")
+print(f"Promedio de temperaturas mínimas: {suma_minimas / 7:.2f}°C")
+print(f"Promedio de temperaturas máximas: {suma_maximas / 7:.2f}°C")
+print(f"La mayor amplitud térmica fue de {mayor_amplitud}°C el día {dia_mayor_amplitud}.")
+
 '''
