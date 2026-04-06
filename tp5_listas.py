@@ -221,48 +221,45 @@ print(f"La mayor amplitud térmica fue de {mayor_amplitud}°C el día {dia_mayor
 #Ejercicio8 Crear una matriz con las notas de 5 estudiantes en 3 materias.
 #Mostrar el promedio de cada estudiante.
 #Mostrar el promedio de cada materia.
-print(f"--- EJERCICIO 8: NOTAS POR MATERIA ---")
-
-# 1. Crear la matriz pidiendo datos (5 estudiantes x 3 materias)
-matriz_notas = []
-cantidad_estudiantes = 5
-cantidad_materias = 3
-
-for i in range(cantidad_estudiantes):
+print(f"--- EJERCICIO 8 ---")
+m_notas = []
+cant_estudiantes = 5
+cant_materias = 3
+#Se carga la matriz con el metodo .append(), se declara estudiantes como fila y materias como columnas.
+for i in range(cant_estudiantes):
     notas_estudiante = []
     print(f"\nCarga de notas para el Estudiante {i + 1}:")
-    
-    for j in range(cantidad_materias):
+    for j in range(cant_materias):
         while True:
-            entrada = input(f"  Ingrese nota de Materia {j + 1}: ")
+            entrada = input(f"Ingrese nota de Materia {j + 1}: ")
             if entrada.isdigit():
                 nota = int(entrada)
                 if 0 <= nota <= 10:
                     notas_estudiante.append(nota)
                     break
                 else:
-                    print("  Error: La nota debe estar entre 0 y 10.")
+                    print("Error: La nota debe estar entre 0 y 10.")
             else:
-                print("  Error: Ingrese un número entero válido.")
+                print("Error: Ingrese un número entero válido.")
     
-    matriz_notas.append(notas_estudiante)
+    m_notas.append(notas_estudiante)
 
-# 2. Mostrar el promedio de cada estudiante
+#Mostrar el promedio de cada estudiante
 print("\n--- PROMEDIO POR ESTUDIANTE ---")
-for i in range(cantidad_estudiantes):
+for i in range(cant_estudiantes):
     suma_notas = 0
-    for j in range(cantidad_materias):
-        suma_notas += matriz_notas[i][j]
+    for j in range(cant_materias):
+        suma_notas += m_notas[i][j]
     
-    promedio = suma_notas / cantidad_materias
+    promedio = suma_notas / cant_materias
     print(f"Estudiante {i + 1}: Promedio = {promedio:.2f}")
 
-# 3. Mostrar el promedio de cada materia
+#Mostrar el promedio de cada materia
 print("\n--- PROMEDIO POR MATERIA ---")
-for j in range(cantidad_materias):
+for j in range(cant_materias):
     suma_materia = 0
-    for i in range(cantidad_estudiantes):
-        suma_materia += matriz_notas[i][j]
+    for i in range(cant_estudiantes):
+        suma_materia += m_notas[i][j]
     
-    promedio_m = suma_materia / cantidad_estudiantes
+    promedio_m = suma_materia / cant_estudiantes
     print(f"Materia {j + 1}: Promedio General = {promedio_m:.2f}")
