@@ -73,10 +73,22 @@ print(f"Lista de numeros impares:")
 for i in range(len(list_impar)):
     print(f"Número impar {i+1}: {list_impar[i]}")
 
-'''
+
 #Ejercicio 4 Lista de valores repetidos
 print(f"--- EJERCICIO 4 ---")
 datos = [1, 3, 5, 3, 7, 1, 9, 5, 3]
+lista = []
+#Recorre la lista datos y agrega la variable a una nueva lista si no esta repetida
+for i in datos:
+    if i not in lista:
+        lista.append(i)
+#Se imprimen la lista original y la lista sin repetidos.
+print("Original:", datos)
+print("Sin repetidos:", lista)
+'''
+
+#Ejercicio 5 Crear una lista con los nombres de 8 estudiantes presentes en clase.
+print(f"--- EJERCICIO 5 ---")
 
 
 
