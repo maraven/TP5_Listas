@@ -85,11 +85,57 @@ for i in datos:
 #Se imprimen la lista original y la lista sin repetidos.
 print("Original:", datos)
 print("Sin repetidos:", lista)
-'''
+
 
 #Ejercicio 5 Crear una lista con los nombres de 8 estudiantes presentes en clase.
 print(f"--- EJERCICIO 5 ---")
+#Lista de estudiantes 
+estudiantes = ["Ariel", "Julian", "Enzo", "Diego", "Gonzalo", "Lionel", "Rodrigo", "Emi"]
 
+print("Lista inicial de estudiantes:")
+for i in estudiantes:
+    print(f"- {i}")
 
+#Se agrega o elimina estudiante y validacion del dato. 
+while True:
+    accion = input("\n¿Desea agregar (A) o eliminar (E) un estudiante? (A/E): ").upper()
+    if accion in ["A", "E"]:
+        break
+    print("Error: Ingrese 'A' para agregar o 'E' para eliminar.")
 
+if accion == "A":
+    #Agregar estudiante con .append con el dato validado
+    while True:
+        nuevo = input("Ingrese el nombre del nuevo estudiante: ").capitalize()
+        if nuevo.isalpha():
+            estudiantes.append(nuevo)
+            print(f"{nuevo} ha sido agregado.")
+            break
+        print("Error: El nombre debe contener solo letras.")
+
+elif accion == "E":
+    #Eliminar estudiante con .remove 
+    while True:
+        #se utiliza el metodo .capitalize() para no tener problemas en la comparacion y eliminacion del estudiante de la lista.
+        eliminar = input("Ingrese el nombre del estudiante a eliminar: ").capitalize()
+        #se valida el dato con isalpha() y se verifica que tambien este en la lista.
+        if eliminar.isalpha():
+            if eliminar in estudiantes:
+                estudiantes.remove(eliminar)
+                print(f"{eliminar} ha sido eliminado.")
+                break
+            else:
+                print(f"El estudiante '{eliminar}' no se encuentra en la lista.")
+                # Damos la opción de salir si no lo encuentra para evitar bucle infinito
+                if input("¿Desea intentar con otro nombre? (S/N): ").upper() == "N":
+                    break
+        else:
+            print("Error: El nombre debe contener solo letras.")
+
+#Lista actualizada
+print("\n--- Lista Final de Estudiantes ---")
+for estudiante in estudiantes:
+    print(estudiante)
+
+'''
 
