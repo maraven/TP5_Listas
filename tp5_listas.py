@@ -137,5 +137,24 @@ print("\n--- Lista Final de Estudiantes ---")
 for estudiante in estudiantes:
     print(estudiante)
 
-'''
 
+#Ejercicio 6 Dada una lista con 7 números, rotar todos los elementos una posición hacia la derecha
+#(el último pasa a ser el primero).
+print(f"--- EJERCICIO 6 ---")
+ 
+lista = [10, 20, 30, 40, 50, 60, 70]
+
+# Rotar todos los elementos una posición hacia la derecha 
+# El último [-1] pasa al inicio, seguido de todo lo demás [:-1]
+rotacion = [lista[-1]] + lista[:-1]
+
+print("Lista Original:")
+# Usamos len() para obtener el índice y mostrarlo correctamente
+for i in range(len(lista)):
+    print(f"Posición {i}: {lista[i]}")
+
+print("\nLista Rotada:")
+for i in range(len(rotacion)):
+    print(f"Posición {i}: {rotacion[i]}")
+
+'''
