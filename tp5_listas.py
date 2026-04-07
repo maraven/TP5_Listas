@@ -264,4 +264,90 @@ for j in range(cant_materias):
     promedio_m = suma_materia / cant_estudiantes
     print(f"Materia {j + 1}: Promedio General = {promedio_m:.2f}")
 
+
+#Ejercicio 9 Representar un tablero de Ta-Te-Ti como una lista de listas (3x3).
+#Inicializarlo con guiones "-" representando casillas vacías.
+#Permitir que dos jugadores ingresen posiciones (fila, columna) para colocar "X" o "O".
+#Mostrar el tablero después de cada jugada.
+print(f"--- EJERCICIO 9 ---")
+#Se inicializa con guiones para las casillas vacias.
+tateti = []
+for i in range(3):
+    fila= ["-", "-", "-"] 
+    tateti.append(fila)
+
+#se define funcion de tablero para no repetir codigo
+def tablero():
+    print(f"\n  1 2 3")
+    for i in range(3):
+        print(f"{i+1}", end=" ") #se utiliza end="" para que quede uno al lado del otro
+        for j in range(3):
+            print(tateti[i][j], end=" ")
+        print() #Salto de linea.
+
+turno = 0 
+jugadores = ["X", "O"]
+ganador= False
+
+#JUEGO
+while turno < 9 and not ganador: #Finaliza el juego cuando se hace ta-te-ti o cuando se ocupan todos los espacios
+    
+    tablero()
+    
+    simbolo= jugadores[turno % 2] #se utiliza modulo para alternar los turnos del jugador por medio del indice.
+    print(f"Turno jugador: '{simbolo}'")
+
+    #Ingreso de simbolos y validacion utilizando posiciones/coordenadas.
+    while True:
+        pos_f = input(f"Ingrese fila (1-3): ").strip()
+        pos_c = input(f"Ingrese columna (1-3): ").strip()
+        if pos_f.isdigit() and pos_c.isdigit():
+            f= int (pos_f)
+            c= int (pos_c)
+            if (1 <= f <= 3) and (1 <= c <= 3):
+                if tateti[f-1][c-1] == "-": #-1 debido que los indices comienzan en 0
+                    tateti[f-1][c-1]= simbolo
+                    break
+                else:
+                    print(f"Error, Casilla ocupada.")
+            else:
+                print(f"Error de posicion, debe ser 1, 2 o 3.")
+        else:
+            print(f"Error. Dato no válido.")
+
+    #Se verifica si hay ta-te-ti y se finaliza el juego con bandera.
+    
+    #TA-TE-TI por filas
+    for i in range(3):
+        sum=0
+        for j in range(3):
+            if tateti[i][j] == simbolo:
+                sum += 1
+        if sum == 3:
+            ganador= True
+    
+    #TA-TE-TI por columnas 
+    for j in range(3):
+        sum_c = 0
+        for i in range(3):
+            if tateti[i][j] == simbolo:
+                sum_c += 1
+        if sum_c == 3:
+            ganador = True
+    
+    #TA-TE-TI por diagonales
+    diag1= 0
+    diag2= 0
+    for i in range(3):
+        if tateti[i][i] == simbolo: #se verifica la diagonal (0,0) (1,1) (2,2)
+            diag1 += 1
+        if tateti[i][2 - i] == simbolo: #se verifica la segunda diagonal (0,2)(1,1)(2,0)
+            diag2 += 1
+    if diag1 == 3 or diag2 == 3:
+        ganador= True
+
+    turno += 1
+
+print("---JUEGO FINALIZADO---")
+tablero()
 '''
