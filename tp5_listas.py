@@ -414,12 +414,14 @@ for i in range(4):
 
 print(f"El producto más vendido en la semana fue el {mas_vendido} con {max} unidades.")
 
-'''
+
 #Ejercicio 11 Crear una lista con los nombres de 10 estudiantes.
-'''Solicitar al usuario que ingrese un nombre a buscar.
-● Indicar si el nombre se encuentra en la lista.
-● Mostrar la posición en la que aparece.
-● Si no se encuentra, informar que no está en la lista.'''
+print(f"--- EJERCICIO 11 ---")
+#Solicitar al usuario que ingrese un nombre a buscar
+#Indicar si el nombre se encuentra en la lista.
+#Mostrar la posición en la que aparece.
+#Si no se encuentra, informar que no está en la lista.
+
 #Se crea lista de 10 estudiantes.
 estudiantes = []
 #estudiantes = ["Ana", "Lucas", "Pedro", "Maria", "Juan", "Rosa", "Luis", "Elena", "Hugo", "Gabi"]
@@ -448,4 +450,39 @@ if buscar in estudiantes:
     print(f"El estudiante {buscar} esta en la lista, se encuentra en la posicion {pos+1} de la lista.")
 else:
     print(f"El estudiante {buscar} no está en la lista.")
+'''
+#Ejercicio 12 Pedir al usuario que ingrese 8 números enteros y almacenarlos en una lista.
+print(f"--- EJERCICIO 12 ---")
+#Mostrar la lista original.
+#Mostrar la lista ordenada de menor a mayor.
+#Mostrar la lista ordenada de mayor a menor.
+#Investigar el uso de sorted() y del parámetro reverse.
+n=3
+lista_num = []
+print(f"--CARGA DE {n} NUMEROS---")
+#carga validada.
+for i in range(n):
+    while True:
+        num= input(f"Ingrese numero entero: ").strip()
+        if num.isdigit():
+            num= int(num)
+            lista_num.append(num)
+            break
+        print(f"Error. Dato no válido")
+
+#Lista original.
+print("\n---LISTA ORIGINAL---")
+for i in range(len(lista_num)):
+    print(f"{lista_num[i]}", end=" ")
+
+print("\n---LISTA ORDENADA DE MENOR A MAYOR---")
+lista_ord1 = sorted(lista_num)
+for i in range(len(lista_num)):
+    print(f"{lista_ord1[i]}", end=" ")
+
+print("\n---LISTA ORDENADA DE MAYOR A MENOR---")
+lista_ord2 = sorted(lista_num,reverse=True)
+for i in lista_ord2:
+    print(i, end=" ")
+
 
