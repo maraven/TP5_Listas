@@ -415,3 +415,37 @@ for i in range(4):
 print(f"El producto más vendido en la semana fue el {mas_vendido} con {max} unidades.")
 
 '''
+#Ejercicio 11 Crear una lista con los nombres de 10 estudiantes.
+'''Solicitar al usuario que ingrese un nombre a buscar.
+● Indicar si el nombre se encuentra en la lista.
+● Mostrar la posición en la que aparece.
+● Si no se encuentra, informar que no está en la lista.'''
+#Se crea lista de 10 estudiantes.
+estudiantes = []
+#estudiantes = ["Ana", "Lucas", "Pedro", "Maria", "Juan", "Rosa", "Luis", "Elena", "Hugo", "Gabi"]
+#carga manual.
+for i in range(10):
+    while True:
+        nom= input(f"Estudiante {i+1}: ").strip()
+        if nom.isalpha():
+            nom= nom.capitalize() #para evitar problemas con la mayuscula
+            estudiantes.append(nom)
+            break
+        print(f"Error. Dato no válido.")
+
+#busqueda de estudiante.
+print(f"---BUSQUEDA DE ESTUDIANTE--- ")
+while True:
+    buscar= input(f"Ingrese nombre de estudiante: ").strip()
+    if buscar.isalpha():
+        buscar = buscar.capitalize()
+        break
+    print("Error: Ingrese un nombre válido (solo letras).")
+
+#se verifica si esta en la lista y se muestra la posicion con el metodo index().
+if buscar in estudiantes:
+    pos= estudiantes.index(buscar)
+    print(f"El estudiante {buscar} esta en la lista, se encuentra en la posicion {pos+1} de la lista.")
+else:
+    print(f"El estudiante {buscar} no está en la lista.")
+
