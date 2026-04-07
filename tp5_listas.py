@@ -350,4 +350,68 @@ while turno < 9 and not ganador: #Finaliza el juego cuando se hace ta-te-ti o cu
 
 print("---JUEGO FINALIZADO---")
 tablero()
+
+#Ejercicio 10 Una tienda registra las ventas de 4 productos durante 7 días, en una matriz de 4x7.
+#Mostrar el total vendido por cada producto.
+#Mostrar el día con mayores ventas totales.
+#Indicar cuál fue el producto más vendido en la semana.
+print(f"--- EJERCICIO 10 ---")
+ventas=[]
+productos = ["Yerba", "Harina", "Arroz", "Fideos"]
+#Carga de ventas de cada producto. se crea matriz fila = producto y Columnas= dias.
+for i in range(4):
+    ventas_por_producto = []
+    print(f"\nIngrese las ventas del producto: {productos[i]}:")
+    #carga por dia
+    for dia in range(7):
+        #validacion
+        while True:
+            entrada = input(f"Ventas del día {dia + 1}: ").strip()
+            if entrada.isdigit():
+                cantidad = int(entrada)
+                ventas_por_producto.append(cantidad)
+                break
+            print("Error: Ingrese un número entero válido.")
+            
+    ventas.append(ventas_por_producto)
+
+#Total vendido por producto (suma de filas)
+print("\n--- TOTAL VENDIDO POR PRODUCTO ---")
+#Se genera una lista para guardar el total de ventas por semana.
+total_semanal_por_producto = []
+for i in range(4):
+    suma = 0
+    for j in range(7):
+        suma += ventas[i][j]
+    
+    total_semanal_por_producto.append(suma) #se guarda en lista el total vendido por semana.
+    print(f"{productos[i]}: {suma} unidades.")
+
+#Dia con mayores ventas totales (Suma de columnas)
+print("\n--- DIA CON MAYOR VENTA TOTAL ---")
+max_ventas = 0
+dia = 0
+#Recorre las columnas guardando las ventas en la variable sum para luego sacar el maximo.
+for j in range(7):
+    sum = 0
+    for i in range(4):
+        sum += ventas[i][j]
+    #compara el max
+    if sum > max_ventas:
+        max_ventas = sum
+        dia = j + 1
+
+print(f"\nEl día con mayores ventas totales fue el Día {dia} ({max_ventas} unidades).")
+
+#Producto más vendido en la semana
+max = 0
+mas_vendido = ""
+#Recorre los productos y compara con el listado generado anteriormente para sacar el mas vendido.
+for i in range(4):
+    if total_semanal_por_producto[i] > max:
+        max = total_semanal_por_producto[i]
+        mas_vendido = productos[i]
+
+print(f"El producto más vendido en la semana fue el {mas_vendido} con {max} unidades.")
+
 '''
