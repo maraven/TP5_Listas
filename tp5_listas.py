@@ -1,5 +1,5 @@
 import random
-'''
+
 #Ejercicio 1 Lista de notas de estudiantes.
 print(f"--- EJERCICIO 1 ---")
 Notas = [6,5,10,3,2,4,9,1,8,7]
@@ -450,7 +450,7 @@ if buscar in estudiantes:
     print(f"El estudiante {buscar} esta en la lista, se encuentra en la posicion {pos+1} de la lista.")
 else:
     print(f"El estudiante {buscar} no está en la lista.")
-'''
+
 #Ejercicio 12 Pedir al usuario que ingrese 8 números enteros y almacenarlos en una lista.
 print(f"--- EJERCICIO 12 ---")
 #Mostrar la lista original.
@@ -486,3 +486,37 @@ for i in lista_ord2:
     print(i, end=" ")
 
 
+#Ejercicio 13 Dada la siguiente lista de puntajes de un videojuego:
+print(f"--- EJERCICIO 13 ---")
+puntajes= [450, 1200, 875, 990, 300, 1500, 640]
+#Mostrar el puntaje más alto y el más bajo.
+#Mostrar la lista ordenada de mayor a menor (ranking).
+#Indicar en qué posición del ranking se encuentra el puntaje 990.
+
+#MÁXIMO y MÍNIMO 
+maximo = puntajes[0]
+minimo = puntajes[0]
+
+for i in puntajes:
+    #Se compara y se actualiza el maximo. 
+    if i > maximo:
+        maximo = i
+        
+    #lo mismo pero para el minimo
+    if i < minimo:
+        minimo = i 
+
+print(f"Puntaje mas alto: {maximo}")
+print(f"Puntaje mas bajo: {minimo}")
+
+#Se ordena la lista de mayor a menor
+ranking = sorted(puntajes, reverse=True)
+
+print("\n--- TABLA DE POSICIONES ---")
+for i in range(len(ranking)):
+    print(f"Puesto {i + 1}: {ranking[i]} pts")
+
+#Posicion del 990 con index()
+if 990 in ranking:
+    pos = ranking.index(990) + 1
+    print(f"\nEl puntaje 990 quedó en el Puesto N° {pos}")
